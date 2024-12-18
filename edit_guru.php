@@ -1,19 +1,15 @@
 <?php
 include('config.php');
-
 // Get the IC from the URL
 $no_kp = mysqli_real_escape_string($connect, $_GET['no_kp']);
-
 // Fetch the record from the database
 $query = "SELECT * FROM data_guru WHERE no_kp = '$no_kp'";
 $result = mysqli_query($connect, $query);
-
 if ($result && mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_assoc($result);
 } else {
     die("Rekod tidak dijumpai!");
 }
-
 // Handle form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Get form data
@@ -22,7 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nama = mysqli_real_escape_string($connect, $_POST['nama']);
     $no_tel = mysqli_real_escape_string($connect, $_POST['no_tel']);
     $kelas = mysqli_real_escape_string($connect, $_POST['kelas']);
-
     // Update the database
     $updateQuery = "UPDATE data_guru SET 
                         no_kp = '$no_kp', 
@@ -30,7 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         no_tel = '$no_tel', 
                         kelas = '$kelas' 
                     WHERE no_kp = '$original_no_kp'";
-
     if (mysqli_query($connect, $updateQuery)) {
         header("Location: dataguru.php"); // Redirect to the data listing page
         exit;
@@ -39,7 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,16 +47,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         <label for="no_kp">IC:</label>
         <input type="text" name="no_kp" value="<?= $row['no_kp'] ?>" required><br>
-
         <label for="nama">Nama:</label>
         <input type="text" name="nama" value="<?= $row['nama'] ?>" required><br>
-
         <label for="no_tel">No Telefon:</label>
         <input type="text" name="no_tel" value="<?= $row['no_tel'] ?>" required><br>
-
         <label for="kelas">Kelas:</label>
         <input type="text" name="kelas" value="<?= $row['kelas'] ?>" required><br>
-
         <input type="submit" value="Update">
     </form>
 </body>

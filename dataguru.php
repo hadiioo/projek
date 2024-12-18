@@ -121,7 +121,6 @@
                 <th>No Tel</th>
                 <th>Kelas</th>
                 <th>Padam</th>
-                <th>Data Pelajar</th>
                 <th>Edit Maklumat guru</th>
             </tr>
             <?php
@@ -139,7 +138,6 @@
                             <td>{$row['no_tel']}</td>
                             <td>{$row['kelas']}</td>
                             <td class='actions'><a href=\"padamguru.php?no_kp={$row['no_kp']}\" onclick=\"return confirm('Rekod ini akan dihapuskan')\">Padam</a></td>
-                            <td class='actions2'><a href=\"datapelajar.php?no_kp={$row['no_kp']}\" onclick=\"return confirm('Rekod ini akan melihat data pelajar')\">Data Pelajar</a></td>
                             <td class='actions3'><a href='edit_guru.php?no_kp={$row['no_kp']}'>Edit</a></td>
                         </tr>
                         ";
@@ -150,6 +148,7 @@
         <div class="button-container">
             <a href="tambahdata.php"><button class="tambah">&#43; Tambah Guru</button></a>
             <a href="insert.php"><button class="logkeluar">Log Keluar</button></a>
+            <a href="pilihan_data.php"><button class="pilihan">Data Pelajar</button></a>
         </div>
     </center>
 </body>

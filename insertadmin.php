@@ -136,7 +136,7 @@ if (isset($_POST['submit'])) {
         </div>
         <hr>
         <h1>TAMBAH REKOD</h1>
-        <a href="tambahguru.php" class="rekod">++ Add Record</a>
+        <a href="idadmin.php" class="rekod">++ Add Record</a>
     </div>
 </body>
 </html>
