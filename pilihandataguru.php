@@ -51,11 +51,11 @@
 <body>
     <h1>PILIH KELAS DATA GURU</h1>
     <div class="button-container">
-        <a href="AL-RAZIguru.php"><button>AL-RAZI</button></a>
-        <a href="AL-JAZARIguru.php"><button>AL-JAZARI</button></a>
-        <a href="AL-FARABIguru.php"><button>AL-FARABI</button></a>
-        <a href="AL-KHAWARIZMIguru.php"><button>AL-KHAWARIZMI</button></a>
-        <a href="AL-IDRISIguru.php"><button>AL-IDRISI</button></a>
+        <a href="al_raziguru.php"><button>AL-RAZI</button></a>
+        <a href="al_jazariguru.php"><button>AL-JAZARI</button></a>
+        <a href="al_farabiguru.php"><button>AL-FARABI</button></a>
+        <a href="al_khawarizmiguru.php"><button>AL-KHAWARIZMI</button></a>
+        <a href="al_idrisiguru.php"><button>AL-IDRISI</button></a>
     </div>
 </body>
 </html>

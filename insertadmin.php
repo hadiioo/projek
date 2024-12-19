@@ -135,8 +135,8 @@ if (isset($_POST['submit'])) {
             <a href="#">SMK LEMBAH KERAMAT</a>
         </div>
         <hr>
-        <h1>TAMBAH REKOD</h1>
-        <a href="idadmin.php" class="rekod">++ Add Record</a>
+        <h1>REKOD DATA</h1>
+        <a href="idadmin.php" class="rekod">REKOD</a>
     </div>
 </body>
 </html>
