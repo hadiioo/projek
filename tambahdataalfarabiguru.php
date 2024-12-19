@@ -11,7 +11,6 @@
             margin: 0;
             padding: 0;
         }
-
         .form-container {
             margin: 50px auto;
             padding: 20px;
@@ -20,22 +19,18 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
         }
-
         h2 {
             text-align: center;
             color: #4CAF50;
             margin-bottom: 20px;
             font-size: 1.8em;
         }
-
         table {
             width: 100%;
         }
-
         td {
             padding: 10px;
         }
-
         input[type="text"], input[type="submit"] {
             width: 100%;
             padding: 10px;
@@ -43,11 +38,9 @@
             border: 1px solid #ddd;
             border-radius: 5px;
         }
-
         input[type="text"] {
             background-color: #f9f9f9;
         }
-
         .submit-btn {
             background-color: #4CAF50;
             color: white;
@@ -56,24 +49,20 @@
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
-
         .submit-btn:hover {
             background-color: #45a049;
         }
-
         .message {
             text-align: center;
             margin: 10px 0;
             padding: 10px;
             border-radius: 5px;
         }
-
         .success {
             background-color: #d4edda;
             color: #155724;
             border: 1px solid #c3e6cb;
         }
-
         .error {
             background-color: #f8d7da;
             color: #721c24;
@@ -83,7 +72,7 @@
 </head>
 <body>
     <div class="form-container">
-        <h2>Tambah Rekod Guru Al-Razi</h2>
+        <h2>Tambah Rekod Guru Al-Farabi</h2>
         <form action="tambahdataalfarabiguru.php" method="post">
             <table>
                 <tr>
@@ -117,7 +106,6 @@
             <p class="message <?= $success ? 'success' : 'error' ?>"><?= $message ?></p>
         <?php endif; ?>
     </div>
-
     <?php
     include('config.php');
     if (isset($_POST['hantar'])) {
@@ -127,7 +115,7 @@
         $kelas = $_POST['kelas'];
         
         // Insert data into the database
-        $query = "INSERT INTO al_idrisiguru ( no_kp, nama, no_tel, kelas) 
+        $query = "INSERT INTO al_farabiguru ( no_kp, nama, no_tel, kelas) 
                   VALUES ('$no_kp', '$nama', '$no_tel', '$kelas')";
         
         if (mysqli_query($connect, $query)) {

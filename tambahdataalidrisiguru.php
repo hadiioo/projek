@@ -83,7 +83,7 @@
 </head>
 <body>
     <div class="form-container">
-        <h2>Tambah Rekod Guru Al-Razi</h2>
+        <h2>Tambah Rekod Guru Al-Idrisi</h2>
         <form action="tambahdataalidrisiguru.php" method="post">
             <table>
                 <tr>

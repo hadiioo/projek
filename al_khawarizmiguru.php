@@ -121,7 +121,7 @@
     </style>
 </head>
 <body>
-    <h1>Data Guru Al-Razi</h1>
+    <h1>Data Guru Al-Khawarizmi</h1>
     <div class="search-bar">
         <form method="post" action="">
             <input type="text" name="search_term" placeholder="Search by IC or Name">

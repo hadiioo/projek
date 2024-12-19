@@ -12,7 +12,6 @@
             background: linear-gradient(to right, #ff9a9e, #fad0c4, #fad0c4, #fbc2eb, #a18cd1);
             color: #333;
         }
-
         h1 {
             text-align: center;
             color: #333;
@@ -20,19 +19,16 @@
             font-size: 2em;
             text-transform: uppercase;
         }
-
         .search-bar {
             text-align: center;
             margin: 20px 0;
         }
-
         .search-bar input[type="text"] {
             padding: 8px;
             width: 50%;
             border-radius: 4px;
             border: 1px solid #ccc;
         }
-
         .search-bar input[type="submit"] {
             padding: 8px 15px;
             border: none;
@@ -42,7 +38,6 @@
             border-radius: 4px;
             margin-left: 10px;
         }
-
         table {
             margin: 20px auto;
             border-collapse: collapse;
@@ -50,48 +45,39 @@
             background: #fff;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-
         th, td {
             text-align: center;
             padding: 12px 15px;
             border: 1px solid #ddd;
         }
-
         th {
             background-color: #ff7043;
             color: #fff;
             text-transform: uppercase;
         }
-
         tr:nth-child(even) {
             background-color: #f9f9f9;
         }
-
         tr:hover {
             background-color: #f1f1f1;
         }
-
         .actions a, .actions2 a {
             color: red;
             text-decoration: none;
             font-weight: bold;
         }
-
         .actions2 a {
             color: #4CAF50;
             text-decoration: none;
             font-weight: bold;
         }
-
         .actions a:hover, .actions2 a:hover {
             color: #45a049;
         }
-
         .button-container {
             text-align: center;
             margin: 20px 0;
         }
-
         .button-container button {
             padding: 10px 20px;
             font-size: 16px;
@@ -102,19 +88,15 @@
             border-radius: 5px;
             transition: background-color 0.3s ease;
         }
-
         .tambah {
             background-color: #4CAF50;
         }
-
         .tambah:hover {
             background-color: #45a049;
         }
-
         .logkeluar {
             background-color: #f44336;
         }
-
         .logkeluar:hover {
             background-color: #e03127;
         }
@@ -142,14 +124,11 @@
             <?php
                 include('config.php');
                 $query = "SELECT * FROM al_farabiguru";
-
                 if (isset($_POST['search'])) {
                     $search_term = mysqli_real_escape_string($connect, $_POST['search_term']);
                     $query .= " WHERE no_kp LIKE '%$search_term%' OR nama LIKE '%$search_term%'";
                 }
-
                 $result = mysqli_query($connect, $query);
-
                 if ($result === false) {
                     echo "<tr><td colspan='7'>Error: " . mysqli_error($connect) . "</td></tr>";
                 } else {
