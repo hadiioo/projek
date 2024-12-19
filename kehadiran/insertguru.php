@@ -135,8 +135,22 @@ if (isset($_POST['submit'])) {
             <a href="#">SMK LEMBAH KERAMAT</a>
         </div>
         <hr>
-        <h1>REKOD DATA</h1>
-        <a href="idadmin.php" class="rekod">REKOD</a>
+        <h1>KEHADIRAN</h1>
+        <form method="post">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" placeholder="Enter your username" required>
+
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" placeholder="Enter your password" required>
+
+            <input type="submit" name="submit" value="Hantar">
+
+            <?php if ($error): ?>
+                <div class="error"><?php echo $error; ?></div>
+            <?php endif; ?>
+        </form>
+
+        <a href="tambahpelajar.php" class="rekod">++ Add Record</a>
     </div>
 </body>
 </html>
