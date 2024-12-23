@@ -100,6 +100,19 @@
         .logkeluar:hover {
             background-color: #e03127;
         }
+        .datapelajar {
+            background-color: #00bcd4;
+        }
+
+        .datapelajar:hover {
+            background-color: #00a1b4;
+        }
+        .keluar{
+            background-color: orange;
+        }
+        .keluar:hover{
+            background-color: orange;
+        }
     </style>
 </head>
 <body>
@@ -142,7 +155,7 @@
                                 <td>{$row['kelas']}</td>
                                 <td class='actions'><a href=\"padamguru.php?no_kp={$row['no_kp']}\" onclick=\"return confirm('Rekod ini akan dihapuskan')\">Padam</a></td>
                                 <td class='actions2'><a href=\"tambahuser.php?no_kp={$row['no_kp']}\" onclick=\"return confirm('Rekod ini akan ditambah')\">Tambah</a></td>
-                                <td><a href='editalalfarabiguru.php?no_kp={$row['no_kp']}'>Edit</a></td>
+                                <td><a href='editalfarabiguru.php?no_kp={$row['no_kp']}'>Edit</a></td>
                             </tr>
                             ";
                         }
@@ -153,8 +166,10 @@
             ?>
         </table>
         <div class="button-container">
+            <a href="pilihandataguru.php"><button class="keluar">< Page Sebelum</button></a>
             <a href="tambahdataalfarabiguru.php"><button class="tambah">&#43; Tambah Guru</button></a>
             <a href="mukadepan.php"><button class="logkeluar">Log Keluar</button></a>
+            <a href="al_farabi.php"><button class="datapelajar">Data Pelajar</button></a>
         </div>
     </center>
 </body>

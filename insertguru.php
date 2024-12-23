@@ -2,12 +2,12 @@
 include('config.php');
 $error = '';
 if (isset($_POST['submit'])) {
-    if (empty($_POST['username']) || empty($_POST['password'])) {
+    if (empty($_POST['ic']) || empty($_POST['password'])) {
         $error = "Username or password is invalid";
     } else {
-        $username = $_POST['username'];
+        $ic = $_POST['ic'];
         $password = $_POST['password'];
-        $query = mysqli_query($connect, "SELECT * FROM user WHERE password = '$password' AND username = '$username'");
+        $query = mysqli_query($connect, "SELECT * FROM user WHERE password = '$password' AND ic = '$ic'");
         $rows = mysqli_num_rows($query);
         if ($rows == 1) {
             header('location: selesai.php');
@@ -27,15 +27,19 @@ if (isset($_POST['submit'])) {
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(90deg, #8c52ff, #5ce1e6);
+            text-align: center;
+            background-image: url("bangunan lembah keramat_enhanced.jpeg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
             margin: 0;
-            padding: 0;
-            color: #333;
+            color: #fff;
         }
 
         .container {
             max-width: 400px;
-            margin: 100px auto;
+            margin: 10px auto;
             padding: 20px;
             background: #fff;
             border-radius: 8px;
@@ -130,15 +134,16 @@ if (isset($_POST['submit'])) {
     </style>
 </head>
 <body>
+    <img src="logo.png" alt="">
     <div class="container">
         <div class="logo">
-            <a href="#">SMK LEMBAH KERAMAT</a>
+            <a href="mukadepan.php">SMK LEMBAH KERAMAT</a>
         </div>
         <hr>
         <h1>KEHADIRAN</h1>
         <form method="post">
-            <label for="username">Username</label>
-            <input type="text" name="username" id="username" placeholder="Enter your username" required>
+            <label for="ic">ic</label>
+            <input type="text" name="ic" id="ic" placeholder="Enter your username" required>
 
             <label for="password">Password</label>
             <input type="password" name="password" id="password" placeholder="Enter your password" required>
@@ -149,8 +154,6 @@ if (isset($_POST['submit'])) {
                 <div class="error"><?php echo $error; ?></div>
             <?php endif; ?>
         </form>
-
-        <a href="tambahpelajar.php" class="rekod">++ Add Record</a>
     </div>
 </body>
 </html>

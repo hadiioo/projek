@@ -118,6 +118,12 @@
         .logkeluar:hover {
             background-color: #e03127;
         }
+        .sebelum{
+            background-color: orange;
+        }
+        .sebelum:hover{
+            background-color: orange;
+        }
     </style>
 </head>
 <body>
@@ -163,7 +169,7 @@
                                 <td>{$row['kelas']}</td>
                                 <td class='actions'><a href=\"padampelajar.php?no_kp={$row['no_kp']}\" onclick=\"return confirm('Rekod ini akan dihapuskan')\">Padam</a></td>
                                 <td class='actions2'><a href=\"tambahuser.php?no_kp={$row['no_kp']}\" onclick=\"return confirm('Rekod ini akan ditambah')\">Tambah</a></td>
-                                <td><a href='edit_pelajar.php?no_kp={$row['no_kp']}'>Edit</a></td>
+                                <td><a href='editalrazi.php?no_kp={$row['no_kp']}'>Edit</a></td>
                             </tr>
                             ";
                         }
@@ -174,6 +180,7 @@
             ?>
         </table>
         <div class="button-container">
+            <a href="al_raziguru.php"><button class="sebelum">< Page Sebelum</button></a>
             <a href="tambahdataalrazi.php"><button class="tambah">&#43; Tambah Pelajar</button></a>
             <a href="mukadepan.php"><button class="logkeluar">Log Keluar</button></a>
         </div>

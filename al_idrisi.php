@@ -118,6 +118,12 @@
         .logkeluar:hover {
             background-color: #e03127;
         }
+        .sebelum{
+            background-color: orange;
+        }
+        .sebelum:hover{
+            background-color: orange;
+        }
     </style>
 </head>
 <body>
@@ -129,6 +135,24 @@
         </form>
     </div>
     <center>
+    <div class="counter">
+            <?php
+                include('config.php');
+                $query = "SELECT * FROM al_farabi";
+
+                if (isset($_POST['search'])) {
+                    $search_term = mysqli_real_escape_string($connect, $_POST['search_term']);
+                    $query .= " WHERE no_kp LIKE '%$search_term%' OR nama LIKE '%$search_term%'";
+                }
+
+                $result = mysqli_query($connect, $query);
+                if ($result) {
+                    $total_students = mysqli_num_rows($result);
+                    echo "Jumlah Pelajar: " . $total_students;
+                } else {
+                    echo "Error: " . mysqli_error($connect);
+                }
+            ?>
         <table>
             <tr>
                 <th>IC</th>
@@ -174,6 +198,7 @@
             ?>
         </table>
         <div class="button-container">
+            <a href="al_idrisiguru.php"><button class="sebelum">< Page Sebelum</button></a>
             <a href="tambahdataalidrisi.php"><button class="tambah">&#43; Tambah Pelajar</button></a>
             <a href="mukadepan.php"><button class="logkeluar">Log Keluar</button></a>
         </div>

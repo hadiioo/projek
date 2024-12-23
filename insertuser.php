@@ -50,15 +50,19 @@ if (isset($_POST['submit'])) {
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(90deg, #8c52ff, #5ce1e6);
+            text-align: center;
+            background-image: url("bangunan lembah keramat_enhanced.jpeg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
             margin: 0;
-            padding: 0;
-            color: #333;
+            color: #fff;
         }
 
         .container {
             max-width: 400px;
-            margin: 100px auto;
+            margin: 10px auto;
             padding: 20px;
             background: #fff;
             border-radius: 8px;
@@ -135,9 +139,10 @@ if (isset($_POST['submit'])) {
     </style>
 </head>
 <body>
+<div class="img"><img src="logo.png" alt=""></div>
     <div class="container">
         <div class="logo">
-            <a href="#">SMK LEMBAH KERAMAT</a>
+            <a href="mukadepan.php">SMK LEMBAH KERAMAT</a>
         </div>
         <hr>
         <h1>KEHADIRAN</h1>

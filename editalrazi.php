@@ -5,7 +5,7 @@ include('config.php');
 $no_kp = mysqli_real_escape_string($connect, $_GET['no_kp']);
 
 // Fetch the record from the database
-$query = "SELECT * FROM data_pelajar WHERE no_kp = '$no_kp'";
+$query = "SELECT * FROM al_razi WHERE no_kp = '$no_kp'";
 $result = mysqli_query($connect, $query);
 
 if ($result && mysqli_num_rows($result) > 0) {
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $kelas = mysqli_real_escape_string($connect, $_POST['kelas']);
 
     // Update the database
-    $updateQuery = "UPDATE data_pelajar SET 
+    $updateQuery = "UPDATE al_razi SET 
                         no_kp = '$no_kp', 
                         nama = '$nama', 
                         no_tel = '$no_tel', 
@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     WHERE no_kp = '$original_no_kp'";
 
     if (mysqli_query($connect, $updateQuery)) {
-        header("Location: datapelajar.php"); // Redirect to the data listing page
+        header("Location: al_razi.php"); // Redirect to the data listing page
         exit;
     } else {
         echo "Error: " . mysqli_error($connect);
@@ -106,7 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <div class="form-container">
         <h2>Edit Rekod Pelajar</h2>
-        <form action="edit_pelajar.php?no_kp=<?= $row['no_kp'] ?>" method="post">
+        <form action="editalrazi.php?no_kp=<?= $row['no_kp'] ?>" method="post">
             <input type="hidden" name="original_no_kp" value="<?= $row['no_kp'] ?>">
             
             <label for="no_kp">IC:</label>

@@ -118,6 +118,21 @@
         .logkeluar:hover {
             background-color: #e03127;
         }
+
+        .sebelum {
+            background-color: orange;
+        }
+
+        .sebelum:hover {
+            background-color: orange;
+        }
+
+        .counter {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -129,16 +144,7 @@
         </form>
     </div>
     <center>
-        <table>
-            <tr>
-                <th>IC</th>
-                <th>NAMA</th>
-                <th>No Tel</th>
-                <th>Kelas</th>
-                <th>Padam</th>
-                <th>Tambah User</th>
-                <th>Edit User</th>
-            </tr>
+        <div class="counter">
             <?php
                 include('config.php');
                 $query = "SELECT * FROM al_farabi";
@@ -149,34 +155,67 @@
                 }
 
                 $result = mysqli_query($connect, $query);
-
-                if ($result === false) {
-                    echo "<tr><td colspan='7'>Error: " . mysqli_error($connect) . "</td></tr>";
+                if ($result) {
+                    $total_students = mysqli_num_rows($result);
+                    echo "Jumlah Pelajar: " . $total_students;
                 } else {
-                    if (mysqli_num_rows($result) > 0) {
-                        while ($row = mysqli_fetch_array($result)) {
-                            echo "
-                            <tr>
-                                <td>{$row['no_kp']}</td>
-                                <td>{$row['nama']}</td>
-                                <td>{$row['no_tel']}</td>
-                                <td>{$row['kelas']}</td>
-                                <td class='actions'><a href=\"padampelajar.php?no_kp={$row['no_kp']}\" onclick=\"return confirm('Rekod ini akan dihapuskan')\">Padam</a></td>
-                                <td class='actions2'><a href=\"tambahuser.php?no_kp={$row['no_kp']}\" onclick=\"return confirm('Rekod ini akan ditambah')\">Tambah</a></td>
-                                <td><a href='edit_pelajar.php?no_kp={$row['no_kp']}'>Edit</a></td>
-                            </tr>
-                            ";
-                        }
-                    } else {
-                        echo "<tr><td colspan='7'>No records found.</td></tr>";
-                    }
+                    echo "Error: " . mysqli_error($connect);
                 }
             ?>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>IC</th>
+                    <th>NAMA</th>
+                    <th>No Tel</th>
+                    <th>Kelas</th>
+                    <th>Padam</th>
+                    <th>Tambah User</th>
+                    <th>Edit User</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                    if ($result) {
+                        if ($total_students > 0) {
+                            while ($row = mysqli_fetch_array($result)) {
+                                echo "
+                                <tr>
+                                    <td>{$row['no_kp']}</td>
+                                    <td>{$row['nama']}</td>
+                                    <td>{$row['no_tel']}</td>
+                                    <td>{$row['kelas']}</td>
+                                    <td class='actions'><a href=\"padamalfarabi.php?no_kp={$row['no_kp']}\" onclick=\"return confirm('Rekod ini akan dihapuskan')\">Padam</a></td>
+                                    <td class='actions2'><a href=\"tambahuser.php?no_kp={$row['no_kp']}\" onclick=\"return confirm('Rekod ini akan ditambah')\">Tambah</a></td>
+                                    <td><a href='editalfarabi.php?no_kp={$row['no_kp']}'>Edit</a></td>
+                                </tr>
+                                ";
+                            }
+                        } else {
+                            echo "<tr><td colspan='8'>No records found.</td></tr>";
+                        }
+                    }
+                ?>
+            </tbody>
         </table>
         <div class="button-container">
+            <a href="al_farabiguru.php"><button class="sebelum">< Page Sebelum</button></a>
             <a href="tambahdataalfarabi.php"><button class="tambah">&#43; Tambah Pelajar</button></a>
             <a href="mukadepan.php"><button class="logkeluar">Log Keluar</button></a>
         </div>
     </center>
+
+    <script>
+        function updateMasaHadirHeader() {
+            const header = document.getElementById('masa-hadir-header');
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+            header.textContent = `MASA HADIR (${timeString})`;
+        }
+
+        // Update the header when the page loads
+        updateMasaHadirHeader();
+    </script>
 </body>
 </html>

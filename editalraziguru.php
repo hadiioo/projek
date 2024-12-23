@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     WHERE no_kp = '$original_no_kp'";
 
     if (mysqli_query($connect, $updateQuery)) {
-        header("Location: al_razi.php"); // Redirect to the data listing page
+        header("Location: al_raziguru.php"); // Redirect to the data listing page
         exit;
     } else {
         echo "Error: " . mysqli_error($connect);

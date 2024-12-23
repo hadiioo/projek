@@ -1,4 +1,3 @@
-<!-- check_status.php -->
 <?php
 session_start();
 if (!isset($_SESSION['check_in_status']) || !isset($_SESSION['check_in_time']) || !isset($_SESSION['name'])) {
@@ -20,10 +19,14 @@ $name = $_SESSION['name'];
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(90deg, #8c52ff, #5ce1e6);
+            text-align: center;
+            background-image: url("bangunan lembah keramat_enhanced.jpeg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
             margin: 0;
-            padding: 0;
-            color: #333;
+            color: #fff;
         }
 
         .container {
@@ -63,6 +66,31 @@ $name = $_SESSION['name'];
         .green-check { color: green; }
         .orange-check { color: orange; }
         .red-x { color: red; }
+        p{
+            color: black;
+        }
+
+        .back-button {
+            display: inline-block;
+            background-color: #8c52ff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #5ce1e6;
+            transform: scale(1.05);
+        }
+
+        .back-button:active {
+            transform: scale(0.95);
+        }
     </style>
 </head>
 <body>
@@ -83,6 +111,7 @@ $name = $_SESSION['name'];
                     <span class="red-x">✖</span>
                 <?php endif; ?>
             </p>
+            <a href="mukadepan.php" class="back-button">Go Back</a>
         </div>
     </div>
 </body>

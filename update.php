@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (mysqli_query($connect, $query)) {
         // Redirect back to the data list
-        header('Location: data.php');
+        header('Location: mukadepan.php');
         exit;
     } else {
         echo "Error: " . mysqli_error($connect);

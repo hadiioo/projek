@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         kelas = '$kelas' 
                     WHERE no_kp = '$original_no_kp'";
     if (mysqli_query($connect, $updateQuery)) {
-        header("Location: al_farabi.php"); // Redirect to the data listing page
+        header("Location: al_farabiguru.php"); // Redirect to the data listing page
         exit;
     } else {
         echo "Error: " . mysqli_error($connect);

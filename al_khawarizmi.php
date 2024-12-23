@@ -118,6 +118,12 @@
         .logkeluar:hover {
             background-color: #e03127;
         }
+        .sebelum{
+            background-color: orange;
+        }
+        .sebelum:hover{
+            background-color: orange;
+        }
     </style>
 </head>
 <body>
@@ -174,6 +180,7 @@
             ?>
         </table>
         <div class="button-container">
+            <a href="al_khawarizmiguru.php"><button class="sebelum">< Page Sebelum</button></a>
             <a href="tambahdataalkhawarizmi.php"><button class="tambah">&#43; Tambah Pelajar</button></a>
             <a href="mukadepan.php"><button class="logkeluar">Log Keluar</button></a>
         </div>

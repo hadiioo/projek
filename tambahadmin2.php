@@ -89,12 +89,12 @@
 <body>
     <div class="form-container">
         <h2>TAMBAH REKOD</h2>
-        <form action="tambahuser2.php" method="post">
+        <form action="tambahadmin2.php" method="post">
             <table>
                 <tr>
-                    <td>IC</td>
+                    <td>ID</td>
                     <td>:</td>
-                    <td><input type="text" name="ic" required></td>
+                    <td><input type="text" name="id" required></td>
                 </tr>
                 <tr>
                     <td>Password</td>
@@ -117,15 +117,15 @@
     include('config.php');
     if (isset($_POST['hantar'])) {
         // Capture form data
-        $ic = $_POST['ic'];
+        $id = $_POST['id'];
         $password = $_POST['password'];
         
         // Insert data into the user table
-        $query = "INSERT INTO user (ic, password) VALUES ('$ic', '$password')";
+        $query = "INSERT INTO guru (id, password) VALUES ('$id', '$password')";
         
         if (mysqli_query($connect, $query)) {
             // Redirect to dataguru.php on success
-            header('Location: mukadepan.php');
+            header('Location: tambahadmin.php');
             exit;
         } else {
             $message = "Ralat: " . mysqli_error($connect);

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Guru/Pelajar SMKLKS</title>
+    <title>Data Admin SMKLKS</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -67,10 +67,10 @@
 </head>
 <body>
     <center>
-        <h1>DATA</h1>
+        <h1>DATA ADMIN</h1>
         <table>
             <tr>
-                <th>IC</th>
+                <th>ID</th>
                 <th>PASSWORD</th>
                 <th>KEMASKINI</th>
                 <th>PADAM</th>
@@ -79,7 +79,7 @@
                 include('config.php');
 
                 // Execute query to fetch user data
-                $papar = mysqli_query($connect, "SELECT * FROM user");
+                $papar = mysqli_query($connect, "SELECT * FROM guru");
 
                 if ($papar === false) {
                     // Display an error if query fails
@@ -87,26 +87,26 @@
                 } else {
                     while ($row = mysqli_fetch_array($papar)) {
                         // Sanitize data for output
-                        $ic = htmlspecialchars($row['ic']);
+                        $id = htmlspecialchars($row['id']);
                         $password = htmlspecialchars($row['password']);
 
                         echo "
                         <tr>
-                            <td>{$ic}</td>
+                            <td>{$id}</td>
                             <td>
                                 <span class='password' data-password='{$password}'>*****</span>
                                 <button class='show-password' onclick='togglePassword(this)'>Show</button>
                             </td>
-                            <td><a href='edituser.php?ic={$ic}'>Edit</a></td>
-                            <td><a href='padammaklumat.php?ic={$ic}'>Padam</a></td>
+                            <td><a href='editadmin.php?id={$id}'>Edit</a></td>
+                            <td><a href='padammaklumatadmin.php?id={$id}'>Padam</a></td>
                         </tr>
                         ";
                     }
                 }
             ?>
         </table>
-        <p><a href="tambahuser2.php" class="button tambah">&#43; TAMBAH DATA</a></p>
-        <p><a href="insert.php" class="button logkeluar">LOG KELUAR</a></p>
+        <p><a href="tambahadmin2.php" class="button tambah">&#43; TAMBAH DATA</a></p>
+        <p><a href="mukadepan.php" class="button logkeluar">LOG KELUAR</a></p>
     </center>
 
     <script>
