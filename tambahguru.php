@@ -1,111 +1,127 @@
-<?php
-include('config.php');
-$error = '';
-	if (isset($_POST['submit'])) {
-		if (empty($_POST['id']) || empty($_POST['password'])) {
-			$error = "id or password is invalid";
-		} else {
-			$id = $_POST['id'];
-			$password = $_POST['password'];
-			$query = mysqli_query($connect, "SELECT * FROM guru WHERE password = '$password' AND id = '$id'");
-			$rows = mysqli_num_rows($query);
-			if ($rows == 1) {
-				header('location: dataguru.php');
-			} else {
-				$error = "id or password is invalid";
-			};
-		};
-	};
-?>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<style>
-		        body {
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Guru/Pelajar SMKLKS</title>
+    <style>
+        body {
             font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: linear-gradient(90deg, #8c52ff, #5ce1e6);
         }
-        #header {
-            background: #ffffff;
-            padding: 20px 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            width: 90%;
-            max-width: 400px;
-            text-align: center;
-        }
-        h2 {
-            color: #333;
-            margin-bottom: 20px;
-        }
-        form {
-            margin-top: 20px;
+        h1 {
+            color: #0073e6;
         }
         table {
-            margin: 0 auto;
-            width: 100%;
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
         }
-        td {
-            padding: 10px;
-        }
-        input[type="text"], input[type="password"] {
-            width: 100%;
+        th, td {
+            text-align: center;
             padding: 10px;
             border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
         }
-        input[type="submit"] {
-            background: #007BFF;
+        th {
+            background-color: #0073e6;
             color: white;
-            border: none;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .button {
+            text-decoration: none;
             padding: 10px 20px;
-            cursor: pointer;
-            font-size: 16px;
+            margin: 10px;
             border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
         }
-        input[type="submit"]:hover {
-            background: #0056b3;
+        .tambah {
+            background-color: #28a745;
         }
-        .error {
-            margin-top: 15px;
-            color: red;
-            font-size: 14px;
+        .logkeluar {
+            background-color: #dc3545;
         }
-	</style>
+        .tambah:hover, .logkeluar:hover {
+            opacity: 0.9;
+        }
+        p {
+            text-align: center;
+        }
+        .show-password {
+            font-size: 12px;
+            cursor: pointer;
+            color: #0073e6;
+            background: none;
+            border: none;
+            padding: 2px 5px;
+        }
+    </style>
 </head>
-        
 <body>
-	<div id="header">
-		<center>
-			<h2>UNTUK ADMIN SAHAJA</h2>
-			<form action="tambahguru.php" method="post">
-				<hr>
-				<table>
-					<tr>
-						<td>Id</td>
-						<td>:</td>
-						<td><input type="text" name="id" required></td>
-					</tr>
-					<tr>
-						<td>Password</td>
-						<td>:</td>
-						<td><input type="password" name="password" required></td>
-					</tr>
-					<tr>
-							<td colspan="3" id="submit-td">
-							<input type="submit" name="submit" value="Submit">
-						</td>
-					</tr>
-				</table>
-				<?php if ($error): ?>
-					<div class="error"><?php echo $error; ?></div>
-				<?php endif; ?>
-			</form>
-		</center>
-	</div>
+    <center>
+        <h1>DATA GURU</h1>
+        <table>
+            <tr>
+                <th>IC</th>
+                <th>PASSWORD</th>
+                <th>KEMASKINI</th>
+                <th>PADAM</th>
+            </tr>
+            <?php
+                include('config.php');
+
+                // Execute query to fetch user data
+                $papar = mysqli_query($connect, "SELECT * FROM userguru");
+
+                if ($papar === false) {
+                    // Display an error if query fails
+                    echo "<tr><td colspan='3'>Error: " . htmlspecialchars(mysqli_error($connect)) . "</td></tr>";
+                } else {
+                    while ($row = mysqli_fetch_array($papar)) {
+                        // Sanitize data for output
+                        $ic = htmlspecialchars($row['ic']);
+                        $password = htmlspecialchars($row['password']);
+
+                        echo "
+                        <tr>
+                            <td>{$ic}</td>
+                            <td>
+                                <span class='password' data-password='{$password}'>*****</span>
+                                <button class='show-password' onclick='togglePassword(this)'>Show</button>
+                            </td>
+                            <td><a href='edituser.php?ic={$ic}'>Edit</a></td>
+                            <td><a href='padammaklumat.php?ic={$ic}'>Padam</a></td>
+                        </tr>
+                        ";
+                    }
+                }
+            ?>
+        </table>
+        <p><a href="tambahguru2.php" class="button tambah">&#43; TAMBAH DATA</a></p>
+        <p><a href="insert.php" class="button logkeluar">LOG KELUAR</a></p>
+    </center>
+
+    <script>
+        function togglePassword(button) {
+            const passwordSpan = button.previousElementSibling;
+            const originalPassword = passwordSpan.getAttribute('data-password');
+
+            if (passwordSpan.textContent === '*****') {
+                passwordSpan.textContent = originalPassword; // Show password
+                button.textContent = 'Hide';
+            } else {
+                passwordSpan.textContent = '*****'; // Mask password
+                button.textContent = 'Show';
+            }
+        }
+    </script>
 </body>
+</html>

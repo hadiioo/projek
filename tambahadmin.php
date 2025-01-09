@@ -70,7 +70,7 @@
         <h1>DATA ADMIN</h1>
         <table>
             <tr>
-                <th>ID</th>
+                <th>IC</th>
                 <th>PASSWORD</th>
                 <th>KEMASKINI</th>
                 <th>PADAM</th>

@@ -1,23 +1,3 @@
-<?php
-include('config.php');
-$error = '';
-if (isset($_POST['submit'])) {
-    if (empty($_POST['username']) || empty($_POST['password'])) {
-        $error = "Username or password is invalid";
-    } else {
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-        $query = mysqli_query($connect, "SELECT * FROM user WHERE password = '$password' AND username = '$username'");
-        $rows = mysqli_num_rows($query);
-        if ($rows == 1) {
-            header('location: selesai.php');
-        } else {
-            $error = "Username or password is invalid";
-        }
-    }
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

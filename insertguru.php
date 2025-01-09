@@ -1,18 +1,42 @@
 <?php
 include('config.php');
+session_start();
 $error = '';
+
 if (isset($_POST['submit'])) {
     if (empty($_POST['ic']) || empty($_POST['password'])) {
-        $error = "Username or password is invalid";
+        $error = "IC or password is invalid";
     } else {
         $ic = $_POST['ic'];
         $password = $_POST['password'];
-        $query = mysqli_query($connect, "SELECT * FROM user WHERE password = '$password' AND ic = '$ic'");
+        $query = mysqli_query($connect, "SELECT * FROM userguru WHERE password = '$password' AND ic = '$ic'");
         $rows = mysqli_num_rows($query);
         if ($rows == 1) {
+            // Check-in Logic
+            date_default_timezone_set('Asia/Kuala_Lumpur');  // Set your time zone
+            $current_time = date("H:i");
+            $check_in_status = '';
+
+            if ($current_time <= '08:00') {
+                $check_in_status = 'green';
+            } elseif ($current_time > '08:00') {
+                $check_in_status = 'orange';
+            }
+
+            // Store status and time in session
+            $_SESSION['check_in_status'] = $check_in_status;
+            $_SESSION['check_in_time'] = $current_time;
+            $_SESSION['name'] = $ic;
+
+            // Insert check-in time and status into database
+            $insert_query = "INSERT INTO result (ic, check_in_time, check_in_status) VALUES ('$ic', '$current_time', '$check_in_status')";
+            mysqli_query($connect, $insert_query);
+
+            // Redirect to result page
             header('location: selesai.php');
+            exit;
         } else {
-            $error = "Username or password is invalid";
+            $error = "IC or password is invalid";
         }
     }
 }
@@ -23,7 +47,7 @@ if (isset($_POST['submit'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Kolej Vokasional Setapak</title>
+    <title>Login - SMK LEMBAH KERAMAT</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -100,24 +124,6 @@ if (isset($_POST['submit'])) {
             background: #5ce1e6;
         }
 
-        .rekod {
-            background: #5ce1e6;
-            color: #fff;
-            padding: 10px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            text-align: center;
-            display: block;
-            margin: 20px auto;
-            transition: 0.3s ease-in-out;
-        }
-
-        .rekod:hover {
-            background: #8c52ff;
-        }
-
         .error {
             color: red;
             font-size: 14px;
@@ -134,16 +140,16 @@ if (isset($_POST['submit'])) {
     </style>
 </head>
 <body>
-    <img src="logo.png" alt="">
+    <div class="img"><img src="logo.png" alt=""></div>
     <div class="container">
         <div class="logo">
             <a href="mukadepan.php">SMK LEMBAH KERAMAT</a>
         </div>
         <hr>
-        <h1>KEHADIRAN</h1>
+        <h1>KEHADIRAN </h1>
         <form method="post">
-            <label for="ic">ic</label>
-            <input type="text" name="ic" id="ic" placeholder="Enter your username" required>
+            <label for="ic">IC</label>
+            <input type="text" name="ic" id="ic" placeholder="Enter your IC" required>
 
             <label for="password">Password</label>
             <input type="password" name="password" id="password" placeholder="Enter your password" required>

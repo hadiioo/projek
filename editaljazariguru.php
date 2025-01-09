@@ -106,7 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <div class="form-container">
         <h2>Edit Rekod Guru</h2>
-        <form action="editalidrisi.php?no_kp=<?= $row['no_kp'] ?>" method="post">
+        <form action="editaljazariguru.php?no_kp=<?= $row['no_kp'] ?>" method="post">
             <input type="hidden" name="original_no_kp" value="<?= $row['no_kp'] ?>">
             
             <label for="no_kp">IC:</label>

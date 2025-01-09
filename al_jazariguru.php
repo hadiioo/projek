@@ -174,8 +174,8 @@
                                 <td>{$row['nama']}</td>
                                 <td>{$row['no_tel']}</td>
                                 <td>{$row['kelas']}</td>
-                                <td class='actions'><a href=\"padamguru.php?no_kp={$row['no_kp']}\" onclick=\"return confirm('Rekod ini akan dihapuskan')\">Padam</a></td>
-                                <td class='actions2'><a href=\"tambahuser.php?no_kp={$row['no_kp']}\" onclick=\"return confirm('Rekod ini akan ditambah')\">Tambah</a></td>
+                                <td class='actions'><a href=\"pajg.php?no_kp={$row['no_kp']}\" onclick=\"return confirm('Rekod ini akan dihapuskan')\">Padam</a></td>
+                                <td class='actions2'><a href=\"tambahguru.php?no_kp={$row['no_kp']}\" onclick=\"return confirm('Rekod ini akan ditambah')\">Tambah</a></td>
                                 <td><a href='editaljazariguru.php?no_kp={$row['no_kp']}'>Edit</a></td>
                             </tr>
                             ";
@@ -187,7 +187,7 @@
             ?>
         </table>
         <div class="button-container">
-            <a href="pilihandataguru.php"><button class="keluar">Keluar</button></a>
+            <a href="pilihandataguru.php"><button class="keluar">< Page Sebelum</button></a>
             <a href="tambahdataaljazariguru.php"><button class="tambah">&#43; Tambah Guru</button></a>
             <a href="mukadepan.php"><button class="logkeluar">Log Keluar</button></a>
             <a href="al_jazari.php"><button class="datapelajar">Data Pelajar</button></a>

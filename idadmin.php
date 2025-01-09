@@ -82,6 +82,7 @@ $error = '';
 <body>
 	<div id="header">
 		<center>
+        <img src="logo.png" alt="">
 			<h2>UNTUK ADMIN SAHAJA</h2>
 			<form action="idadmin.php" method="post">
 				<hr>

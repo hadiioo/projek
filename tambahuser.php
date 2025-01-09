@@ -67,7 +67,7 @@
 </head>
 <body>
     <center>
-        <h1>DATA</h1>
+        <h1>DATA PELAJAR</h1>
         <table>
             <tr>
                 <th>IC</th>

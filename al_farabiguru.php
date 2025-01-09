@@ -154,7 +154,7 @@
                                 <td>{$row['no_tel']}</td>
                                 <td>{$row['kelas']}</td>
                                 <td class='actions'><a href=\"padamguru.php?no_kp={$row['no_kp']}\" onclick=\"return confirm('Rekod ini akan dihapuskan')\">Padam</a></td>
-                                <td class='actions2'><a href=\"tambahuser.php?no_kp={$row['no_kp']}\" onclick=\"return confirm('Rekod ini akan ditambah')\">Tambah</a></td>
+                                <td class='actions2'><a href=\"tambahguru.php?no_kp={$row['no_kp']}\" onclick=\"return confirm('Rekod ini akan ditambah')\">Tambah</a></td>
                                 <td><a href='editalfarabiguru.php?no_kp={$row['no_kp']}'>Edit</a></td>
                             </tr>
                             ";
